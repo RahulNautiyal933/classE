@@ -10,6 +10,9 @@ import Signup from "./pages/Signup";
 import VerifyEmail from "./pages/VerifyEmail";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";
 import OpenRoute from "./components/core/Auth/OpenRoute";
+import MyProfile from "./components/core/Dashboard/MyProfile"
+import Dashboard from "./pages/Dashboard";
+// import Settings from "./components/core/Dashboard/Settings";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,7 +42,6 @@ function App() {
             </OpenRoute>
           }
         />
-        z
         <Route
           path="verify-email"
           element={
@@ -48,6 +50,42 @@ function App() {
             </OpenRoute>
           }
         />
+
+        <Route
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
+          <Route path="dashboard/my-profile" element={<MyProfile />} />
+
+          {/* <Route path="dashboard/Settings" element={<Settings />} /> */}
+
+          {/* {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+            <>
+              <Route path="dashboard/cart" element={<Cart />} />
+              <Route
+                path="dashboard/enrolled-courses"
+                element={<EnrolledCourses />}
+              />
+            </>
+          )} */}
+
+          {/* {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+            <>
+              <Route path="dashboard/instructor" element={<Instructor />} />
+              <Route path="dashboard/add-course" element={<AddCourse />} />
+              <Route path="dashboard/my-courses" element={<MyCourses />} />
+              <Route
+                path="dashboard/edit-course/:courseId"
+                element={<EditCourse />}
+              />
+            </>
+          )} */}
+
+
+        </Route>
       </Routes>
     </div>
   );

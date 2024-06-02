@@ -1,21 +1,21 @@
 import React from "react"
-import * as Icon1 from "react-icons/bi"
-import * as Icon3 from "react-icons/hi2"
-import * as Icon2 from "react-icons/io5"
+import * as Icon1 from "react-icons/bi"       //icon 1 array hai bi walon ka
+import * as Icon3 from "react-icons/hi2"      //icon 2 -----------""--------
+import * as Icon2 from "react-icons/io5"      //icon 3 -----------""--------
 
 const contactDetails = [
   {
     icon: "HiChatBubbleLeftRight",
     heading: "Chat on us",
     description: "Our friendly team is here to help.",
-    details: "info@studynotion.com",
+    details: "info@classE.com",
   },
   {
     icon: "BiWorld",
     heading: "Visit us",
     description: "Come and say hello at our office HQ.",
     details:
-      "Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016",
+      "Office Address",
   },
   {
     icon: "IoCall",
@@ -29,7 +29,8 @@ const ContactDetails = () => {
   return (
     <div className="flex flex-col gap-6 rounded-xl bg-richblack-800 p-4 lg:p-6">
       {contactDetails.map((ele, i) => {
-        let Icon = Icon1[ele.icon] || Icon2[ele.icon] || Icon3[ele.icon]
+        let Icon = Icon1[ele.icon] || Icon2[ele.icon] || Icon3[ele.icon]  
+        {/* search for these elements in their respective arrays */}
         return (
           <div
             className="flex flex-col gap-[2px] p-3 text-sm text-richblack-200"

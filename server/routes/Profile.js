@@ -10,7 +10,7 @@ const {
 } = require("../controllers/Profile")
 
 
-router.put("/updateDisplayPicture",auth,updateDisplayPicture)
+router.put("/updateDisplayPicture",auth,updateDisplayPicture) //tested
 router.delete("/deleteProfile", auth, deleteAccount)  //tested
 router.put("/updateProfile", auth, updateProfile)   // tested
 router.get("/getUserDetails", auth, getAllUserDetails)  //tested

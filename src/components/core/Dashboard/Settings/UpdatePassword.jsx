@@ -21,8 +21,8 @@ export default function UpdatePassword() {
   } = useForm()
 
   const submitPasswordForm = async (data) => {
-    // console.log("password Data - ", data)
     try {
+      console.log(data);
       await changePassword(token, data)
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
@@ -35,6 +35,7 @@ export default function UpdatePassword() {
         <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
           <h2 className="text-lg font-semibold text-richblack-5">Password</h2>
           <div className="flex flex-col gap-5 lg:flex-row">
+              {/* Old Password */}
             <div className="relative flex flex-col gap-2 lg:w-[48%]">
               <label htmlFor="oldPassword" className="lable-style">
                 Current Password
@@ -63,6 +64,8 @@ export default function UpdatePassword() {
                 </span>
               )}
             </div>
+
+              {/* New Password */}
             <div className="relative flex flex-col gap-2 lg:w-[48%]">
               <label htmlFor="newPassword" className="lable-style">
                 New Password
@@ -93,6 +96,8 @@ export default function UpdatePassword() {
             </div>
           </div>
         </div>
+
+
         <div className="flex justify-end gap-2">
           <button
             onClick={() => {

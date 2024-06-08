@@ -16,11 +16,30 @@ import Dashboard from "./pages/Dashboard";
 // import { ACCOUNT_TYPE } from "./utils/constants";
 // import Cart from "./components/core/Dashboard/Cart";
 import Settings from "./components/core/Dashboard/Settings";
+import { useEffect } from "react";
+
+
+// to delete the token on expiration and logOut automatically
+function deleteExpiredToken() {               
+  const token = localStorage.getItem('token'); 
+  if (token) { 
+    const { exp } = JSON.parse(atob(token.split('.')[1])); 
+    const expirationTime = new Date(exp * 1000); 
+    if (expirationTime < new Date()) { 
+      localStorage.removeItem('token'); 
+    } 
+  } 
+} 
+
 
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.profile);
+
+  useEffect(()=>{
+    console.log("Rendering")
+    deleteExpiredToken()},[]);
 
   return (
 

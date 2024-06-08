@@ -32,10 +32,14 @@ export default function EditProfile() {
       <form onSubmit={handleSubmit(submitProfileForm)}>
         {/* Profile Information */}
         <div className="my-10 flex flex-col gap-y-6 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+          
           <h2 className="text-lg font-semibold text-richblack-5">
             Profile Information
           </h2>
+          
           <div className="flex flex-col gap-5 lg:flex-row">
+          
+            {/* First Name */}
             <div className="flex flex-col gap-2 lg:w-[48%]">
               <label htmlFor="firstName" className="lable-style">
                 First Name
@@ -55,6 +59,8 @@ export default function EditProfile() {
                 </span>
               )}
             </div>
+
+            {/* Last Name */}
             <div className="flex flex-col gap-2 lg:w-[48%]">
               <label htmlFor="lastName" className="lable-style">
                 Last Name
@@ -77,6 +83,8 @@ export default function EditProfile() {
           </div>
 
           <div className="flex flex-col gap-5 lg:flex-row">
+
+            {/* DOB */}
             <div className="flex flex-col gap-2 lg:w-[48%]">
               <label htmlFor="dateOfBirth" className="lable-style">
                 Date of Birth
@@ -104,6 +112,8 @@ export default function EditProfile() {
                 </span>
               )}
             </div>
+
+            {/* Gender */}
             <div className="flex flex-col gap-2 lg:w-[48%]">
               <label htmlFor="gender" className="lable-style">
                 Gender
@@ -130,9 +140,12 @@ export default function EditProfile() {
                 </span>
               )}
             </div>
+
           </div>
 
           <div className="flex flex-col gap-5 lg:flex-row">
+
+            {/* Contact Number */}
             <div className="flex flex-col gap-2 lg:w-[48%]">
               <label htmlFor="contactNumber" className="lable-style">
                 Contact Number
@@ -159,6 +172,8 @@ export default function EditProfile() {
                 </span>
               )}
             </div>
+
+            {/* About */}
             <div className="flex flex-col gap-2 lg:w-[48%]">
               <label htmlFor="about" className="lable-style">
                 About

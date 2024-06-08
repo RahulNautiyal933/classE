@@ -15,8 +15,7 @@ import Dashboard from "./pages/Dashboard";
 // import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
 // import { ACCOUNT_TYPE } from "./utils/constants";
 // import Cart from "./components/core/Dashboard/Cart";
-
-// import Settings from "./components/core/Dashboard/Settings";
+import Settings from "./components/core/Dashboard/Settings";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +39,7 @@ function App() {
             </OpenRoute>
           }
         />
+
         <Route
           path="signup"
           element={
@@ -48,6 +48,7 @@ function App() {
             </OpenRoute>
           }
         />
+        
         <Route
           path="verify-email"
           element={
@@ -66,7 +67,7 @@ function App() {
         >
           <Route path="dashboard/my-profile" element={<MyProfile />} />
 
-          {/* <Route path="dashboard/Settings" element={<Settings />} /> */}
+          <Route path="dashboard/Settings" element={<Settings />} />
 
           {/* {user?.accountType === ACCOUNT_TYPE.STUDENT && (
             <>

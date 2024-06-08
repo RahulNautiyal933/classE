@@ -53,6 +53,7 @@ export default function EnrolledCourses() {
               }`}
               key={i}
             >
+              {/* Course Name and Desc. */}
               <div
                 className="flex w-[45%] cursor-pointer items-center gap-4 px-5 py-3"
                 onClick={() => {
@@ -76,9 +77,13 @@ export default function EnrolledCourses() {
                 </div>
               </div>
               
+              {/* Ḍuration */}
               <div className="w-1/4 px-2 py-3">{course?.totalDuration}</div>
+              
+              {/* Progress */}
               <div className="flex w-1/5 flex-col gap-2 px-2 py-3">
                 <p>Progress: {course.progressPercentage || 0}%</p>
+
                 {/* <ProgressBar
                   completed={course.progressPercentage || 0}
                   height="8px"

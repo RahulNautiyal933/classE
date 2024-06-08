@@ -17,12 +17,11 @@ export default function ChangeProfilePicture() {
   const fileInputRef = useRef(null)
 
   const handleClick = () => {
-    fileInputRef.current.click()
+    fileInputRef.current.click()     //making as if we clicked on that input tag
   }
 
   const handleFileChange = (e) => {
-    const file = e.target.files[0]
-    // console.log(file)
+    const file = e.target.files[0]   //select only the first file of all
     if (file) {
       setImageFile(file)
       previewFile(file)
@@ -43,7 +42,6 @@ export default function ChangeProfilePicture() {
       setLoading(true)
       const formData = new FormData()
       formData.append("displayPicture", imageFile)
-      // console.log("formdata", formData)
       dispatch(updateDisplayPicture(token, formData)).then(() => {
         setLoading(false)
       })
@@ -57,6 +55,7 @@ export default function ChangeProfilePicture() {
       previewFile(imageFile)
     }
   }, [imageFile])
+
   return (
     <>
       <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12 text-richblack-5">
@@ -69,20 +68,22 @@ export default function ChangeProfilePicture() {
           <div className="space-y-2">
             <p>Change Profile Picture</p>
             <div className="flex flex-row gap-3">
-              <input
+              <input       //will be called via the fileInputRef variable
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
                 className="hidden"
                 accept="image/png, image/gif, image/jpeg"
               />
-              <button
+
+              <button      //on clicking on this it will call the input wala tag
                 onClick={handleClick}
                 disabled={loading}
                 className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
               >
                 Select
               </button>
+
               <IconBtn
                 text={loading ? "Uploading..." : "Upload"}
                 onclick={handleFileUpload}
@@ -91,6 +92,7 @@ export default function ChangeProfilePicture() {
                   <FiUpload className="text-lg text-richblack-900" />
                 )}
               </IconBtn>
+
             </div>
           </div>
         </div>

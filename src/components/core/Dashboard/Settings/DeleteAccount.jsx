@@ -23,10 +23,13 @@ export default function DeleteAccount() {
         <div className="flex aspect-square h-24 w-24 items-center justify-center rounded-full bg-pink-700">
           <FiTrash2 className="text-5xl text-pink-200" />
         </div>
+
         <div className="flex flex-col space-y-2">
+          
           <h2 className="text-lg font-semibold text-richblack-5">
             Delete Account
           </h2>
+
           <div className="w-3/5 text-pink-25">
             <p>Would you like to delete account?</p>
             <p>
@@ -34,6 +37,7 @@ export default function DeleteAccount() {
               permanent and will remove all the contain associated with it.
             </p>
           </div>
+          
           <button
             type="button"
             className="w-fit cursor-pointer italic text-pink-300"

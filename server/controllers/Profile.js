@@ -167,6 +167,7 @@ exports.getEnrolledCourses = async (req, res) => {
         },
       })
       .exec();
+      
     userDetails = userDetails.toObject();
     var SubsectionLength = 0;
     for (var i = 0; i < userDetails.courses.length; i++) {

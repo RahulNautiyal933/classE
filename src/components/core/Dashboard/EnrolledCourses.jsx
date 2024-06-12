@@ -21,6 +21,7 @@ export default function EnrolledCourses() {
       console.log("Could not fetch enrolled courses.")
     }
   };
+
   useEffect(() => {
     getEnrolledCourses();
   }, [])
@@ -67,6 +68,8 @@ export default function EnrolledCourses() {
                   alt="course_img"
                   className="h-14 w-14 rounded-lg object-cover"
                 />
+
+                {/* Course Description */}
                 <div className="flex max-w-xs flex-col gap-2">
                   <p className="font-semibold">{course.courseName}</p>
                   <p className="text-xs text-richblack-300">
@@ -75,6 +78,7 @@ export default function EnrolledCourses() {
                       : course.courseDescription}
                   </p>
                 </div>
+
               </div>
               
               {/* Ḍuration */}
@@ -84,11 +88,11 @@ export default function EnrolledCourses() {
               <div className="flex w-1/5 flex-col gap-2 px-2 py-3">
                 <p>Progress: {course.progressPercentage || 0}%</p>
 
-                {/* <ProgressBar
+                <ProgressBar
                   completed={course.progressPercentage || 0}
                   height="8px"
                   isLabelVisible={false}
-                /> */}
+                />
               </div>
             </div>
           ))}

@@ -12,9 +12,9 @@ import PrivateRoute from "./components/core/Auth/PrivateRoute";
 import OpenRoute from "./components/core/Auth/OpenRoute";
 import MyProfile from "./components/core/Dashboard/MyProfile"
 import Dashboard from "./pages/Dashboard";
-// import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
-// import { ACCOUNT_TYPE } from "./utils/constants";
-// import Cart from "./components/core/Dashboard/Cart";
+import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
+import { ACCOUNT_TYPE } from "./utils/constants";
+import Cart from "./components/core/Dashboard/Cart";
 import Settings from "./components/core/Dashboard/Settings";
 import { useEffect } from "react";
 
@@ -88,7 +88,7 @@ function App() {
 
           <Route path="dashboard/Settings" element={<Settings />} />
 
-          {/* {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+          {user?.accountType === ACCOUNT_TYPE.STUDENT && (
             <>
               <Route path="dashboard/cart" element={<Cart />} />
 
@@ -97,7 +97,7 @@ function App() {
                 element={<EnrolledCourses />}
               />
             </>
-          )} */}
+          )}
 
           {/* {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
             <>

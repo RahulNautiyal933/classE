@@ -2,7 +2,6 @@ import { FaStar } from "react-icons/fa"
 import { RiDeleteBin6Line } from "react-icons/ri"
 import ReactStars from "react-rating-stars-component"
 import { useDispatch, useSelector } from "react-redux"
-
 import { removeFromCart } from "../../../../slices/cartSlice"
 
 export default function RenderCartCourses() {
@@ -23,13 +22,18 @@ export default function RenderCartCourses() {
               alt={course?.courseName}
               className="h-[148px] w-[220px] rounded-lg object-cover"
             />
+
             <div className="flex flex-col space-y-1">
+
               <p className="text-lg font-medium text-richblack-5">
                 {course?.courseName}
               </p>
+
               <p className="text-sm text-richblack-300">
                 {course?.category?.name}
               </p>
+
+              {/* Showing ratings in stars and number of total reviews */}
               <div className="flex items-center gap-2">
                 <span className="text-yellow-5">4.5</span>
                 <ReactStars
@@ -45,8 +49,11 @@ export default function RenderCartCourses() {
                   {course?.ratingAndReviews?.length} Ratings
                 </span>
               </div>
+
             </div>
           </div>
+
+            {/* Remove from cart option */}
           <div className="flex flex-col items-end space-y-2">
             <button
               onClick={() => dispatch(removeFromCart(course._id))}
@@ -59,6 +66,7 @@ export default function RenderCartCourses() {
               ₹ {course?.price}
             </p>
           </div>
+
         </div>
       ))}
     </div>

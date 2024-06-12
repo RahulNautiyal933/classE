@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { setLoading } from "./authSlice";
 
 const initialState={
     user:localStorage.getItem("user")?JSON.parse(localStorage.getItem("user")):null,

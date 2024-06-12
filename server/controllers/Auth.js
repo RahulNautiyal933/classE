@@ -187,7 +187,7 @@ exports.login=async (req,res)=>{
             accountType:user.accountType,
         }
         if(await bcrypt.compare(password,user.password)){
-            const token=jwt.sign(payload,process.env.JWT_SECRET,{expiresIn:"2h"});
+            const token=jwt.sign(payload,process.env.JWT_SECRET,{expiresIn:"2d"});
 
         user.token=token;
         user.password=null;

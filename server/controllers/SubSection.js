@@ -6,43 +6,35 @@ const { imageUploadToCloudinary } = require("../utils/imageUploader");
 exports.createSubSection=async (req,res)=>{
     try {
         
-        const{sectionId,title,description,timeDuration}=req.body;
-
+        const{sectionId,title,description}=req.body;
         const video=req.files.videoFile;
 
-        const package={
-            sectionId,
-            title,
-            description,
-            timeDuration,
-            video
-        }
-
-        if(!sectionId || !title || !description || !timeDuration || !video){
-            return res.json({
+        if(!sectionId || !title || !description || !video){
+            return res.status(404).json({
                 success:false,
                 message:"All fields are required",
             })
         }
+        console.log(video)
 
         const videoUpload=await imageUploadToCloudinary(video,process.env.FOLDER_NAME,)
 
         const subSectionDetails=await SubSection.create({
             title:title,
-            timeDuration:timeDuration,
+            timeDuration:`${videoUpload.duration}`,
             description:description,
             videoUrl:videoUpload.secure_url,
         })
 
 
         //update section with subsection id
-        await Section.findByIdAndUpdate(sectionId,{$push:{subSection:subSectionDetails._id}},{new:true});
+        const updatedSection = await Section.findByIdAndUpdate(sectionId,{$push:{subSection:subSectionDetails._id}},{new:true}).populate("subSection")
 
 
         return res.json({
             success:true,
             message:"Subsection created successfully",
-            subSectionDetails,
+            updatedSection,
         })
 
     } catch (error) {
@@ -52,8 +44,6 @@ exports.createSubSection=async (req,res)=>{
         })
     }
 }
-
-
 
 //update subsection
 exports.updateSubSection=async (req,res)=>{

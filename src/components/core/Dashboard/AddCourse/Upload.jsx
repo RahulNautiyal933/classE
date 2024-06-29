@@ -18,9 +18,7 @@ export default function Upload({
 }) {
   const { course } = useSelector((state) => state.course)
   const [selectedFile, setSelectedFile] = useState(null)
-  const [previewSource, setPreviewSource] = useState(
-    viewData ? viewData : editData ? editData : ""
-  )
+  const [previewSource, setPreviewSource] = useState(viewData ? viewData : editData ? editData : "")
   const inputRef = useRef(null)
 
   const onDrop = (acceptedFiles) => {
@@ -39,7 +37,6 @@ export default function Upload({
   })
 
   const previewFile = (file) => {
-    // console.log(file)
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onloadend = () => {
@@ -49,12 +46,10 @@ export default function Upload({
 
   useEffect(() => {
     register(name, { required: true })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [register])
 
   useEffect(() => {
     setValue(name, selectedFile)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedFile, setValue])
 
   return (
@@ -62,11 +57,12 @@ export default function Upload({
       <label className="text-sm text-richblack-5" htmlFor={name}>
         {label} {!viewData && <sup className="text-pink-200">*</sup>}
       </label>
+
       <div
         className={`${
-          isDragActive ? "bg-richblack-600" : "bg-richblack-700"
+        isDragActive ? "bg-richblack-600" : "bg-richblack-700"
         } flex min-h-[250px] cursor-pointer items-center justify-center rounded-md border-2 border-dotted border-richblack-500`}
-      >
+        >
         {previewSource ? (
           <div className="flex w-full flex-col p-6">
             {!video ? (
@@ -78,6 +74,7 @@ export default function Upload({
             ) : (
               <Player aspectRatio="16:9" playsInline src={previewSource} />
             )}
+
             {!viewData && (
               <button
                 type="button"

@@ -42,9 +42,9 @@ export default function CourseInformationForm() {
       }
       setLoading(false)
     }
+
     // if form is in edit mode
     if (editCourse) {
-      // console.log("data populated", editCourse)
       setValue("courseTitle", course.courseName)
       setValue("courseShortDesc", course.courseDescription)
       setValue("coursePrice", course.price)
@@ -61,7 +61,6 @@ export default function CourseInformationForm() {
 
   const isFormUpdated = () => {
     const currentValues = getValues()
-    // console.log("changes after editing form values:", currentValues)
     if (
       currentValues.courseTitle !== course.courseName ||
       currentValues.courseShortDesc !== course.courseDescription ||
@@ -78,19 +77,13 @@ export default function CourseInformationForm() {
     return false
   }
 
-  //   handle next button click
   const onSubmit = async (data) => {
-    // console.log(data)
-
     if (editCourse) {
-      // const currentValues = getValues()
-      // console.log("changes after editing form values:", currentValues)
-      // console.log("now course:", course)
-      // console.log("Has Form Changed:", isFormUpdated())
+      // if there is change in the original values
       if (isFormUpdated()) {
         const currentValues = getValues()
         const formData = new FormData()
-        // console.log(data)
+        
         formData.append("courseId", course._id)
         if (currentValues.courseTitle !== course.courseName) {
           formData.append("courseName", data.courseTitle)
@@ -135,7 +128,6 @@ export default function CourseInformationForm() {
       }
       return
     }
-
     const formData = new FormData()
     formData.append("courseName", data.courseTitle)
     formData.append("courseDescription", data.courseShortDesc)
@@ -146,11 +138,13 @@ export default function CourseInformationForm() {
     formData.append("status", COURSE_STATUS.DRAFT)
     formData.append("instructions", JSON.stringify(data.courseRequirements))
     formData.append("thumbnailImage", data.courseImage)
+
     setLoading(true)
     const result = await addCourseDetails(formData, token)
     if (result) {
+      console.log("Changing step to number 2")
       dispatch(setStep(2))
-      dispatch(setCourse(result))
+      dispatch(setCourse(result.data))
     }
     setLoading(false)
   }
@@ -177,6 +171,7 @@ export default function CourseInformationForm() {
           </span>
         )}
       </div>
+
       {/* Course Short Description */}
       <div className="flex flex-col space-y-2">
         <label className="text-sm text-richblack-5" htmlFor="courseShortDesc">
@@ -194,6 +189,7 @@ export default function CourseInformationForm() {
           </span>
         )}
       </div>
+
       {/* Course Price */}
       <div className="flex flex-col space-y-2">
         <label className="text-sm text-richblack-5" htmlFor="coursePrice">
@@ -220,6 +216,7 @@ export default function CourseInformationForm() {
           </span>
         )}
       </div>
+      
       {/* Course Category */}
       <div className="flex flex-col space-y-2">
         <label className="text-sm text-richblack-5" htmlFor="courseCategory">
@@ -247,6 +244,7 @@ export default function CourseInformationForm() {
           </span>
         )}
       </div>
+
       {/* Course Tags */}
       <ChipInput
         label="Tags"
@@ -257,6 +255,7 @@ export default function CourseInformationForm() {
         setValue={setValue}
         getValues={getValues}
       />
+
       {/* Course Thumbnail Image */}
       <Upload
         name="courseImage"
@@ -266,6 +265,7 @@ export default function CourseInformationForm() {
         errors={errors}
         editData={editCourse ? course?.thumbnail : null}
       />
+
       {/* Benefits of the course */}
       <div className="flex flex-col space-y-2">
         <label className="text-sm text-richblack-5" htmlFor="courseBenefits">
@@ -283,6 +283,7 @@ export default function CourseInformationForm() {
           </span>
         )}
       </div>
+
       {/* Requirements/Instructions */}
       <RequirementsField
         name="courseRequirements"
@@ -292,6 +293,7 @@ export default function CourseInformationForm() {
         errors={errors}
         getValues={getValues}
       />
+      
       {/* Next Button */}
       <div className="flex justify-end gap-x-2">
         {editCourse && (
@@ -303,6 +305,7 @@ export default function CourseInformationForm() {
             Continue Wihout Saving
           </button>
         )}
+        
         <IconBtn
           disabled={loading}
           text={!editCourse ? "Next" : "Save Changes"}

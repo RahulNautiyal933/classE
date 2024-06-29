@@ -44,6 +44,7 @@ export default function RequirementsField({
       <label className="text-sm text-richblack-5" htmlFor={name}>
         {label} <sup className="text-pink-200">*</sup>
       </label>
+
       <div className="flex flex-col items-start space-y-2">
         <input
           type="text"
@@ -60,11 +61,14 @@ export default function RequirementsField({
           Add
         </button>
       </div>
+
+    {/* Tags */}
       {requirementsList.length > 0 && (
         <ul className="mt-2 list-inside list-disc">
           {requirementsList.map((requirement, index) => (
             <li key={index} className="flex items-center text-richblack-5">
               <span>{requirement}</span>
+
               <button
                 type="button"
                 className="ml-2 text-xs text-pure-greys-300 "

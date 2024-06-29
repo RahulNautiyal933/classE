@@ -17,26 +17,27 @@ import { ACCOUNT_TYPE } from "./utils/constants";
 import Cart from "./components/core/Dashboard/Cart";
 import Settings from "./components/core/Dashboard/Settings";
 import { useEffect } from "react";
+import AddCourse from "./components/core/Dashboard/AddCourse";
 
-
-// to delete the token on expiration and logOut automatically
+  // to delete the token on expiration and logOut automatically
 function deleteExpiredToken() {               
-  const token = localStorage.getItem('token'); 
-  if (token) { 
-    const { exp } = JSON.parse(atob(token.split('.')[1])); 
-    const expirationTime = new Date(exp * 1000); 
-    if (expirationTime < new Date()) { 
-      localStorage.removeItem('token'); 
+    const token = localStorage.getItem('token'); 
+    if (token) { 
+      const { exp } = JSON.parse(atob(token.split('.')[1])); 
+      const expirationTime = new Date(exp * 1000); 
+      if (expirationTime < new Date()) { 
+        localStorage.removeItem('token'); 
+      } 
     } 
-  } 
-} 
-
+  }
 
 function App() {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.profile);
+  const { user } = useSelector((state) => state.profile); 
 
+  
   useEffect(()=>{
     console.log("Rendering")
     deleteExpiredToken()},[]);
@@ -99,17 +100,17 @@ function App() {
             </>
           )}
 
-          {/* {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+          {user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
             <>
-              <Route path="dashboard/instructor" element={<Instructor />} />
+              {/* <Route path="dashboard/instructor" element={<Instructor />} /> */}
               <Route path="dashboard/add-course" element={<AddCourse />} />
-              <Route path="dashboard/my-courses" element={<MyCourses />} />
-              <Route
+              {/* <Route path="dashboard/my-courses" element={<MyCourses />} /> */}
+              {/* <Route
                 path="dashboard/edit-course/:courseId"
                 element={<EditCourse />}
-              />
+              /> */}
             </>
-          )} */}
+          )}
 
 
         </Route>

@@ -13,14 +13,14 @@ const OTPSchema=new mongoose.Schema({
     createdAt:{
         type:Date,
         default:Date.now(),
-        expires:5*60,
+        expires:5*6000,
     }
 });
 
-//a funstion to send emails
+//a function to send emails
 async function sendVerificationEmail(email,otp){
     try {
-        const mailResponse=await mailSender(email,"Verification email from StudyNotion",`OTP for verification is ${otp}`);
+        const mailResponse=await mailSender(email,"Verification email from classE",`OTP for verification is ${otp}`);
         console.log("Email sent successfully",mailResponse);
     } catch (error) {
         console.log("error occured while sending mails",error);

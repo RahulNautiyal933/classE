@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, matchPath, useLocation } from "react-router-dom";
-import logo from "../../assets/Logo/Logo-Full-Light.png";
+import logo from "../../assets/Logo/logo.png";
 import { useSelector } from "react-redux";
 import { NavbarLinks } from "../../data/navbar-links";
 import { IoCart } from "react-icons/io5";
@@ -47,7 +47,7 @@ export const Navbar = () => {
       <div className="flex w-11/12 max-w-maxContent items-center justify-between">
         {/* Logo */}
         <Link to={"/"}>
-          <img src={logo} alt="logo" width={160} height={32} loading="lazy" />
+          <img className="rounded-full size-16 w-full" src={logo} alt="logo" loading="lazy" />
         </Link>
 
         {/* Navigation links */}
